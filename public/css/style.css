@@ -80,21 +80,43 @@ body {
     min-height: 20px;
     /* Reserve space */
     font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: center;
+    /* Add transition for smoother appearance if desired */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .message-success {
-    color: #28a745;
-    /* Green */
+    color: #155724;
+    /* Darker Green Text */
+    background-color: #d4edda;
+    /* Light Green Background */
+    border: 1px solid #c3e6cb;
 }
 
 .message-error {
-    color: #dc3545;
-    /* Red */
+    color: #721c24;
+    /* Darker Red Text */
+    background-color: #f8d7da;
+    /* Light Red Background */
+    border: 1px solid #f5c6cb;
 }
 
 .message-loading {
-    color: #007bff;
-    /* Blue */
+    color: #004085;
+    /* Darker Blue Text */
+    background-color: #cce5ff;
+    /* Light Blue Background */
+    border: 1px solid #b8daff;
+}
+
+/* Style for when message area is empty */
+#message-area:empty {
+    padding: 0;
+    border: none;
+    min-height: 20px;
+    /* Still reserve space */
 }
 
 
@@ -450,4 +472,60 @@ body.admin-page {
     .footer {
         font-size: 20px;
     }
+}
+
+/* Snackbar Styling */
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default */
+    min-width: 250px;
+    max-width: 90%;
+    /* Max width on small screens */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Default dark background */
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    /* Sit on top of other content */
+    z-index: 1001;
+    /* Higher than modal */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Adjust horizontal centering */
+    bottom: 30px;
+    /* Position at the bottom */
+    font-size: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    /* Start fully transparent */
+    transition: visibility 0s 0.5s, opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+    /* Fade and slide transition */
+}
+
+/* Class added by JS to show the snackbar */
+#snackbar.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+    /* Slide up a bit */
+    transition: visibility 0s, opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+    /* Transition in */
+}
+
+/* Specific styles for error/success types */
+#snackbar.snackbar-error {
+    background-color: #dc3545;
+    /* Red for errors */
+    color: white;
+}
+
+#snackbar.snackbar-success {
+    background-color: #28a745;
+    /* Green for success */
+    color: white;
 }
