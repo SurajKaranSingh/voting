@@ -182,7 +182,7 @@ body {
 .media-card img,
 .media-card video {
     width: 100%;
-    max-height: 200px;
+    /* max-height: 200px; */
     /* Limit media height */
     object-fit: contain;
     /* Show whole image/video */
@@ -190,10 +190,11 @@ body {
     cursor: pointer;
     margin-bottom: 10px;
     /* Space between media and button */
+    background-color: #f0f0f0;
 }
 
 .media-card video {
-    background-color: #eee;
+    background-color: #e0e0e0;
     /* Background for videos */
 }
 
@@ -476,36 +477,48 @@ body.admin-page {
 
 /* Snackbar Styling */
 #snackbar {
+    box-sizing: border-box;
+    /* CRITICAL: Include padding/border in the element's total width and height */
     visibility: hidden;
-    /* Hidden by default */
-    min-width: 250px;
-    max-width: 90%;
-    /* Max width on small screens */
-    margin-left: -125px;
-    /* Divide value of min-width by 2 */
+    /* min-width: 250px; */
+    /* REMOVE or comment out min-width */
+    max-width: 500px;
+    /* Set a reasonable max width for larger screens */
+    width: auto;
+    /* Allow the width to shrink based on content, up to max-width */
+    margin: 0 auto;
+    /* Works with left/transform for block centering */
     background-color: #333;
-    /* Default dark background */
     color: #fff;
     text-align: center;
     border-radius: 4px;
-    padding: 16px;
+    padding: 14px 20px;
+    /* Base padding */
     position: fixed;
-    /* Sit on top of other content */
     z-index: 1001;
-    /* Higher than modal */
     left: 50%;
-    /* Center horizontally */
     transform: translateX(-50%);
-    /* Adjust horizontal centering */
+    /* Keep this centering method */
     bottom: 30px;
-    /* Position at the bottom */
     font-size: 1em;
+    /* Base font size */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    /* Start fully transparent */
     transition: visibility 0s 0.5s, opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+    /* Add word wrap properties */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    /* Older browser support */
+    hyphens: auto;
+    /* Optional: Allow hyphenation for better wrapping */
+    /* Start fully transparent */
+    transition: visibility 0s 0.5s,
+        opacity 0.5s ease-in-out,
+        bottom 0.5s ease-in-out;
     /* Fade and slide transition */
 }
+
+
 
 /* Class added by JS to show the snackbar */
 #snackbar.show {
@@ -528,4 +541,266 @@ body.admin-page {
     background-color: #28a745;
     /* Green for success */
     color: white;
+}
+
+/* ============================ */
+/* ===== Responsive Styles ===== */
+/* ============================ */
+
+/* Large Devices (Desktops, < 1200px) */
+@media (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+        /* Slightly smaller container */
+    }
+
+    .media-gallery {
+        /* Adjust min card size if needed for ~4 columns */
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+
+/* Medium Devices (Tablets, < 992px) */
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+        /* Further reduce container size */
+        padding: 15px;
+        /* Reduce container padding */
+    }
+
+    .header-box h1 {
+        font-size: 1.8em;
+        /* Slightly smaller heading */
+    }
+
+    .media-gallery {
+        /* Aim for ~3 columns */
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        /* Reduce gap */
+    }
+
+    .media-card {
+        padding: 12px;
+        /* Reduce card padding */
+    }
+
+    .admin-page .result-container {
+        flex-direction: column;
+        /* Stack admin boxes earlier */
+        gap: 25px;
+    }
+
+    .admin-page .result-box,
+    .admin-page .top-voted {
+        min-width: unset;
+        /* Remove min-width when stacking */
+    }
+
+    #snackbar {
+        /* Reduce max-width, ensuring some space from edges */
+        max-width: calc(100vw - 60px);
+        /* e.g., 30px margin on each side */
+        padding: 12px 18px;
+        /* Slightly reduce padding */
+    }
+}
+
+
+/* Small Devices (Landscape Phones, < 768px) */
+@media (max-width: 767.98px) {
+    body {
+        padding: 10px;
+        /* Less padding on body */
+    }
+
+    .container {
+        max-width: 100%;
+        /* Allow container to fill width */
+        padding: 15px 10px;
+        /* Adjust padding */
+        margin-bottom: 20px;
+        /* Less space before footer */
+    }
+
+    .header-box {
+        padding: 12px 20px;
+    }
+
+    .header-box h1 {
+        font-size: 1.5em;
+        /* Smaller heading */
+    }
+
+    #email {
+        width: 90%;
+        /* Ensure email input uses most width */
+        max-width: none;
+        /* Remove max-width constraint */
+        font-size: 0.95em;
+        padding: 10px 12px;
+    }
+
+    /* Reduce font size in message area */
+    #message-area {
+        font-size: 0.9em;
+        margin: 10px 0;
+    }
+
+    .section-header {
+        padding: 10px;
+        margin: 20px auto 15px auto;
+    }
+
+    .section-header h2 {
+        font-size: 1.2em;
+    }
+
+    .media-gallery {
+        /* Aim for ~2 columns */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        /* Further reduce gap */
+        padding: 5px;
+    }
+
+    .media-card {
+        padding: 10px;
+        /* Less card padding */
+        border-radius: 8px;
+        /* Slightly smaller radius */
+    }
+
+    /* Ensure buttons are easily tappable */
+    .media-card button {
+        padding: 10px 12px;
+        font-size: 0.9em;
+        /* Slightly smaller button text */
+        border-radius: 4px;
+    }
+
+    /* Make modal close button larger and easier to tap */
+    .modal-close {
+        font-size: 45px;
+        top: 10px;
+        right: 15px;
+        /* Add background for better visibility/tap area if needed */
+        /* background-color: rgba(0,0,0,0.3); */
+        /* border-radius: 50%; */
+        /* width: 40px; */
+        /* height: 40px; */
+        /* line-height: 40px; */
+        /* text-align: center; */
+    }
+
+    /* Make video fullscreen close button easier to tap */
+    #fullscreenOverlay .close-btn {
+        font-size: 35px;
+        width: 45px;
+        height: 45px;
+        line-height: 43px;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Adjust snackbar for smaller screens */
+    #snackbar {
+        /* min-width: 200px; */
+        /* Remove or reduce min-width */
+        /* margin-left: 0; */
+        /* Remove margin if using full width */
+        max-width: calc(100vw - 40px);
+        /* Take most width with some padding */
+        padding: 10px 15px;
+        font-size: 0.9em;
+        bottom: 20px;
+    }
+
+    #snackbar.show {
+        bottom: 40px;
+        /* Adjust slide-up position */
+    }
+
+    .footer {
+        font-size: 20px;
+        /* Slightly smaller footer icon */
+        padding: 10px;
+    }
+
+    /* Admin Page Adjustments */
+    .admin-page h1 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+
+    .admin-page .result-box,
+    .admin-page .top-voted {
+        padding: 15px;
+        /* Less padding in admin boxes */
+        border-radius: 10px;
+    }
+
+    .admin-page .result-box h3,
+    .admin-page .top-voted h3 {
+        font-size: 1.1em;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+    }
+
+    .admin-page .result-box p,
+    .admin-page .top-voted p {
+        font-size: 0.9em;
+        /* Smaller text in admin results */
+        line-height: 1.5;
+    }
+}
+
+
+/* Extra Small Devices (Portrait Phones, < 576px) */
+@media (max-width: 575.98px) {
+    .header-box h1 {
+        font-size: 1.3em;
+        /* Even smaller heading */
+    }
+
+    .media-gallery {
+        /* Can force 2 columns or let auto-fill decide based on minmax */
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        /* Or force 2 columns: grid-template-columns: repeat(2, 1fr); */
+        gap: 12px;
+        /* Minimal gap */
+    }
+
+    .media-card img,
+    .media-card video {
+        max-height: 150px;
+        /* Reduce max media height if needed */
+    }
+
+    .media-card button {
+        font-size: 0.85em;
+        padding: 8px 10px;
+    }
+
+    /* Further reduce padding/margins if necessary */
+    .container {
+        padding: 10px 8px;
+    }
+
+    body {
+        padding: 5px;
+    }
+    #snackbar {
+        /* Allow it to get very close to the edges */
+        max-width: calc(100vw - 20px); /* e.g., 10px margin on each side */
+        padding: 10px 12px; /* Minimum practical padding */
+        font-size: 0.85em;  /* Smaller font */
+        bottom: 15px;       /* Lower starting position */
+        border-radius: 3px; /* Optional: smaller radius */
+     }
+      #snackbar.show {
+        bottom: 30px; /* Lower shown position */
+     }
 }
