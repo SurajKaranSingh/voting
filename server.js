@@ -3,6 +3,7 @@ const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const path = require('path');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,6 +29,9 @@ const client = new MongoClient(dbUri, {
 
 let db; // Variable to hold the database connection
 
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH;
+
 async function connectDB() {
     try {
         await client.connect();
@@ -42,6 +46,49 @@ async function connectDB() {
     } catch (err) {
         console.error("Failed to connect to MongoDB", err);
         process.exit(1); // Exit the application if DB connection fails
+    }
+}
+
+async function authenticateAdmin(req, res, next) {
+    // Skip auth if username/hash aren't set (for development ease)
+    if (!ADMIN_USERNAME || !ADMIN_PASSWORD_HASH) {
+        console.warn("Skipping admin authentication because ADMIN_USERNAME or ADMIN_PASSWORD_HASH is not set.");
+        return next();
+    }
+
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        res.setHeader('WWW-Authenticate', 'Basic realm="Admin Area"');
+        return res.status(401).send('Authentication required.');
+    }
+
+    // Header format is "Basic base64encodedcredentials"
+    const encodedCreds = authHeader.split(' ')[1];
+    if (!encodedCreds) {
+        res.setHeader('WWW-Authenticate', 'Basic realm="Admin Area"');
+        return res.status(401).send('Invalid authentication header.');
+    }
+
+    const decodedCreds = Buffer.from(encodedCreds, 'base64').toString('utf-8');
+    const [username, password] = decodedCreds.split(':');
+
+    // Compare provided username and hashed password
+    const isUsernameCorrect = (username === ADMIN_USERNAME);
+    let isPasswordCorrect = false;
+    if (password) {
+        isPasswordCorrect = await bcrypt.compare(password, ADMIN_PASSWORD_HASH);
+    }
+
+
+    if (isUsernameCorrect && isPasswordCorrect) {
+        // Authentication successful
+        next();
+    } else {
+        console.warn(`Failed admin login attempt for username: ${username}`);
+        res.setHeader('WWW-Authenticate', 'Basic realm="Admin Area"');
+        // Don't reveal which part was wrong
+        return res.status(401).send('Authentication failed.');
     }
 }
 
@@ -88,7 +135,7 @@ app.post('/api/vote', async (req, res) => {
 });
 
 // GET /api/results - Get vote counts for the admin panel
-app.get('/api/results', async (req, res) => {
+app.get('/api/results', authenticateAdmin, async (req, res) => {
     if (!db) {
         return res.status(503).json({ message: "Database not connected" });
     }
@@ -125,7 +172,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/admin', (req, res) => {
+app.get('/admin', authenticateAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
