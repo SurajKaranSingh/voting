@@ -100,31 +100,36 @@
     <div class="media-gallery">
       <!-- Video Card Example (Repeat for all videos) -->
       <div class="media-card">
-        <video src="/voting/E-cell.mp4" muted poster="/images/video_placeholder.png"
-          onclick="openFullscreenVideo(this)"></video> <!-- Add poster image if possible -->
+        <!-- Remove poster, add preload="auto", keep muted -->
+        <video src="/voting/E-cell.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+          <!-- Optional: Fallback text if video fails -->
+          Your browser does not support the video tag.
+        </video>
         <button data-meme-id="Meme 16">Vote for Meme 16</button>
       </div>
       <div class="media-card">
-        <video src="/voting/round2hel - yashraj chandel.mp4" muted poster="/images/video_placeholder.png"
-          onclick="openFullscreenVideo(this)"></video>
+        <video src="/voting/round2hel - yashraj chandel.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+        </video>
         <button data-meme-id="Meme 17">Vote for Meme 17</button>
       </div>
       <div class="media-card">
-        <video src="/voting/VID-20250331-WA0000 - Jiya Singh.mp4" muted poster="/images/video_placeholder.png"
-          onclick="openFullscreenVideo(this)"></video>
+        <video src="/voting/VID-20250331-WA0000 - Jiya Singh.mp4" preload="auto" muted
+          onclick="openFullscreenVideo(this)">
+        </video>
         <button data-meme-id="Meme 18">Vote for Meme 18</button>
       </div>
+      <!-- Apply preload="auto" and remove poster from ALL video tags -->
       <div class="media-card">
-        <video src="/voting/WhatsApp Video 2025-04-01 at 23.19.11_76b44b46.mp4" muted
-          poster="/images/video_placeholder.png" onclick="openFullscreenVideo(this)"></video>
+        <video src="/voting/WhatsApp Video 2025-04-01 at 23.19.11_76b44b46.mp4" preload="auto" muted
+          onclick="openFullscreenVideo(this)">
+        </video>
         <button data-meme-id="Meme 19">Vote for Meme 19</button>
       </div>
       <div class="media-card">
-        <video src="/voting/0328 (2)(1) - Agresh Agrawal.mp4" muted poster="/images/video_placeholder.png"
-          onclick="openFullscreenVideo(this)"></video>
+        <video src="/voting/0328 (2)(1) - Agresh Agrawal.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+        </video>
         <button data-meme-id="Meme 20">Vote for Meme 20</button>
       </div>
-      <!-- Add all other video meme cards similarly -->
     </div>
   </div> <!-- End Container -->
 
