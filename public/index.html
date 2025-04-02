@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vote for Your Favorite Meme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css"> <!-- Link CSS -->
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header-box">
+      <h1>🗳️ Vote for Your Favorite Meme</h1>
+    </div>
+
+    <input type="email" id="email" placeholder="Enter your college email to vote" required>
+    <div id="message-area"></div> <!-- Area for feedback messages -->
+
+    <!-- Image Memes Section -->
+    <div class="section-header">
+      <h2>Image Memes</h2>
+    </div>
+    <div class="media-gallery">
+      <!-- Meme Card Example (Repeat for all images) -->
+      <div class="media-card">
+        <img src="/voting/lame cheems - Harsh Soni.png" alt="Meme by Harsh Soni" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 1">Vote for Meme 1</button> <!-- Use data attribute -->
+      </div>
+      <div class="media-card">
+        <img src="/voting/5f9043672023f0143f9dc080a6cb2293 - Dolly Patel.jpg" alt="Meme by Dolly Patel"
+          onclick="openModal(this.src)">
+        <button data-meme-id="Meme 2">Vote for Meme 2</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/blockchain vs you - Harsh Soni.png" alt="Meme by Harsh Soni" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 3">Vote for Meme 3</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/IMG-20250330-WA0020 - Princy Dhakriya.jpg" alt="Meme by Princy Dhakriya"
+          onclick="openModal(this.src)">
+        <button data-meme-id="Meme 4">Vote for Meme 4</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/IMG-20250330-WA0023 - Princy Dhakriya.jpg" alt="Meme by Princy Dhakriya"
+          onclick="openModal(this.src)">
+        <button data-meme-id="Meme 5">Vote for Meme 5</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/IMG-20250331-WA0015 - the.gifts.emporium.jpg" alt="Meme by the.gifts.emporium"
+          onclick="openModal(this.src)">
+        <button data-meme-id="Meme 6">Vote for Meme 6</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/roman elites - Harsh Soni.png" alt="Meme by Harsh Soni" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 7">Vote for Meme 7</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot_20250312_140346_Instagram - Ankush Gupta.jpg" alt="Meme by Ankush Gupta"
+          onclick="openModal(this.src)">
+        <button data-meme-id="Meme 8">Vote for Meme 8</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/spongbob - Harsh Soni.png" alt="Meme by Harsh Soni" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 9">Vote for Meme 9</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094604.png" alt="Meme 10" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 10">Vote for Meme 10</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094625.png" alt="Meme 11" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 11">Vote for Meme 11</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094638.png" alt="Meme 12" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 12">Vote for Meme 12</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094745.png" alt="Meme 13" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 13">Vote for Meme 13</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094800.png" alt="Meme 14" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 14">Vote for Meme 14</button>
+      </div>
+      <div class="media-card">
+        <img src="/voting/Screenshot 2025-04-02 094814.png" alt="Meme 15" onclick="openModal(this.src)">
+        <button data-meme-id="Meme 15">Vote for Meme 15</button>
+      </div>
+      <!-- Add all other image meme cards similarly -->
+    </div>
+
+    <!-- Video Memes Section -->
+    <div class="section-header">
+      <h2>Video Memes</h2>
+      <p>(Click video to play fullscreen)</p>
+    </div>
+    <div class="media-gallery">
+      <!-- Video Card Example (Repeat for all videos) -->
+      <div class="media-card">
+        <!-- Remove poster, add preload="auto", keep muted -->
+        <video src="/voting/E-cell.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+          <!-- Optional: Fallback text if video fails -->
+          Your browser does not support the video tag.
+        </video>
+        <button data-meme-id="Meme 16">Vote for Meme 16</button>
+      </div>
+      <div class="media-card">
+        <video src="/voting/round2hel - yashraj chandel.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+        </video>
+        <button data-meme-id="Meme 17">Vote for Meme 17</button>
+      </div>
+      <div class="media-card">
+        <video src="/voting/VID-20250331-WA0000 - Jiya Singh.mp4" preload="auto" muted
+          onclick="openFullscreenVideo(this)">
+        </video>
+        <button data-meme-id="Meme 18">Vote for Meme 18</button>
+      </div>
+      <!-- Apply preload="auto" and remove poster from ALL video tags -->
+      <div class="media-card">
+        <video src="/voting/WhatsApp Video 2025-04-01 at 23.19.11_76b44b46.mp4" preload="auto" muted
+          onclick="openFullscreenVideo(this)">
+        </video>
+        <button data-meme-id="Meme 19">Vote for Meme 19</button>
+      </div>
+      <div class="media-card">
+        <video src="/voting/0328 (2)(1) - Agresh Agrawal.mp4" preload="auto" muted onclick="openFullscreenVideo(this)">
+        </video>
+        <button data-meme-id="Meme 20">Vote for Meme 20</button>
+      </div>
+    </div>
+  </div> <!-- End Container -->
+
+  <!-- Image Modal -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <span class="modal-close" onclick="closeModal()">×</span>
+    <img id="modal-img" class="modal-content" src="">
+  </div>
+
+  <!-- Fullscreen Video Overlay -->
+  <div id="fullscreenOverlay" style="display: none;">
+    <button class="close-btn" onclick="closeFullscreenVideo()">×</button>
+    <video id="fullscreenVideo" controls autoplay style="max-width: 90%; max-height: 80%; border-radius: 8px;"></video>
+  </div>
+
+  <div class="footer">
+    <span title="Admin Panel" onclick="goToAdmin()">⚙️</span>
+  </div>
+
+  <div id="snackbar"></div>
+
+  <script src="/js/index.js"></script>
+</body>
+
+</html>
