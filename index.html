@@ -7,8 +7,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-      background-size: cover;
+      background: url('image/bg.jpg') no-repeat center center fixed;
+      background-size: contain;
       color: #333;
       margin: 0;
       padding: 0;
@@ -16,7 +16,7 @@
     .container {
       padding: 30px;
       text-align: center;
-      color:white
+      color: black;
       
     }
     .image-gallery {
@@ -78,77 +78,144 @@
   </style>
 </head>
 <body>
-
+<br><br>
   <div class="container">
-    <h1>🗳️ Vote for Your Favorite meme</h1>
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; margin: 20px auto; text-align: center;">
+      <h1 style="margin: 0;">🗳️ Vote for Your Favorite Meme</h1>
+    </div>
 
     <input type="email" id="email" placeholder="Enter your email to vote" required>
-    <br>
-    <br>
 
     <div class="image-gallery">
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nature_photo.jpg/640px-Nature_photo.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <button onclick="vote('Image 1')">Vote for meme 1</button>
+        <img src="image/lame cheems - Harsh Soni.png"  alt="Meme 1" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 1')">Vote for Meme </button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nature_photo.jpg/640px-Nature_photo.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <button onclick="vote('Image 2')">Vote for meme 2</button>
+        <img src="image/5f9043672023f0143f9dc080a6cb2293 - Dolly Patel.jpg" alt="Meme 2" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 2')">Vote for Meme </button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nature_photo.jpg/640px-Nature_photo.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <button onclick="vote('Image 3')">Vote for meme 3</button>
+        <img src="image/blockchain vs you - Harsh Soni.png" alt="Meme 3" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 3')">Vote for Meme 3</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nature_photo.jpg/640px-Nature_photo.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <button onclick="vote('Image 4')">Vote for meme 4</button>
+        <img src="image/IMG-20250330-WA0020 - Princy Dhakriya.jpg" alt="Image 4" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 4')">Vote for Meme 4</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nature_photo.jpg/640px-Nature_photo.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <button onclick="vote('Image 5')">Vote for meme 5</button>
+        <img src="image/IMG-20250330-WA0023 - Princy Dhakriya.jpg" alt="Meme 5" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 5')">Vote for Meme 5</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 6')">Vote for meme 6</button>
+        <img src="image/IMG-20250331-WA0015 - the.gifts.emporium.jpg" alt="Meme 6" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 6')">Vote for Meme 6</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 7')">Vote for meme 7</button>
+        <img src="image/roman elites - Harsh Soni.png" alt="Meme 7" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 7')">Vote for Meme 7</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 8')">Vote for meme 8</button>
+        <img src="image/Screenshot_20250312_140346_Instagram - Ankush Gupta.jpg" alt="Meme 8" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 8')">Vote for Meme 8</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 9')">Vote for meme 9</button>
+        <img src="image/spongbob - Harsh Soni.png" alt="Meme 9" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 9')">Vote for Meme 9</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 10')">Vote for meme 10</button>
+        <img src="image/Screenshot 2025-04-02 094604.png" alt="Meme 10" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 10')">Vote for Meme 10</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 11')">Vote for meme 11</button>
+        <img src="image/Screenshot 2025-04-02 094625.png" alt="Meme 11" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 11')">Vote for Meme 11</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 12')">Vote for meme 12</button>
+        <img src="image/Screenshot 2025-04-02 094638.png" alt="Meme 12" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 12')">Vote for Meme 12</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 13')">Vote for meme 13</button>
+        <img src="image/Screenshot 2025-04-02 094745.png" alt="Meme 12" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 13')">Vote for Meme 13</button>
       </div>
       <div class="image-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/640px-Starsinthesky.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <button onclick="vote('Image 14')">Vote for meme 14</button>
+        <img src="image/Screenshot 2025-04-02 094800.png" alt="Meme 12" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 14')">Vote for Meme 14</button>
       </div>
+      <div class="image-card">
+        <img src="image/Screenshot 2025-04-02 094814.png" alt="Meme 12" onclick="openModal(this.src)">
+        <button onclick="vote('Meme 15')">Vote for Meme 15</button>
+      </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; margin: 20px auto; text-align: center;">
+    <h1 style="margin: 0;">Video Meme</h1>
+  </div>
+  <div class="image-gallery">
+    <!-- Video Cards -->
+    <div class="video-card">
+      <video src="image/E-cell.mp4" muted onclick="openFullscreenVideo(this)" width="200" style="cursor: pointer;"></video>
+      <button onclick="vote('Meme 16')">Vote for Meme 16</button>
     </div>
+    <div class="video-card">
+      <video src="image/round2hel - yashraj chandel.mp4" muted onclick="openFullscreenVideo(this)" width="200" style="cursor: pointer;"></video>
+      <button onclick="vote('Meme 17')">Vote for Meme 17</button>
+    </div>
+    <div class="video-card">
+      <video src="image/VID-20250331-WA0000 - Jiya Singh.mp4" muted onclick="openFullscreenVideo(this)" width="200" style="cursor: pointer;"></video>
+      <button onclick="vote('Meme 18')">Vote for Meme 18</button>
+    </div>
+    <div class="video-card">
+      <video src="image/WhatsApp Video 2025-04-01 at 23.19.11_76b44b46.mp4" muted onclick="openFullscreenVideo(this)" width="200" style="cursor: pointer;"></video>
+      <button onclick="vote('Meme 19')">Vote for Meme 19</button>
+    </div>
+    <div class="video-card">
+      <video src="image/0328 (2)(1) - Agresh Agrawal.mp4" muted onclick="openFullscreenVideo(this)" width="200" style="cursor: pointer;"></video>
+      <button onclick="vote('Meme 20')">Vote for Meme 20</button>
+    </div>
+  </div>
+</div>
+
+<!-- Fullscreen Video Overlay -->
+<div id="fullscreenOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center; flex-direction: column;">
+  <button onclick="closeFullscreenVideo()" style="position: absolute; top: 20px; right: 30px; background: transparent; color: white; font-size: 32px; border: none; cursor: pointer;">&times;</button>
+  <video id="fullscreenVideo" controls autoplay style="max-width: 90%; max-height: 80%; border-radius: 12px;"></video>
+</div>
+
+<script>
+  function openFullscreenVideo(videoElement) {
+    const overlay = document.getElementById('fullscreenOverlay');
+    const fullscreenVideo = document.getElementById('fullscreenVideo');
+
+    fullscreenVideo.src = videoElement.src;
+    overlay.style.display = 'flex';
+    fullscreenVideo.play();
+  }
+
+  function closeFullscreenVideo() {
+    const overlay = document.getElementById('fullscreenOverlay');
+    const fullscreenVideo = document.getElementById('fullscreenVideo');
+
+    fullscreenVideo.pause();
+    fullscreenVideo.src = '';
+    overlay.style.display = 'none';
+  }
+
+  function vote(memeName) {
+    alert("You voted for " + memeName);
+  }
+</script>
+
+
 
     <div class="footer">
       <span title="Admin Panel" onclick="goToAdmin()">⚙️</span>
     </div>
-  </div>
+  
 
   <!-- Modal -->
   <div id="modal" class="modal" onclick="closeModal()">
