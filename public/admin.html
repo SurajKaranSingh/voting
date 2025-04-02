@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Votes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a2e;
+      color: #f0f0f0;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .result-box {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #333;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .result-box p {
+      font-size: 16px;
+    }
+    .top-voted {
+      margin-top: 30px;
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .highlight {
+      color: #00ff99;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Admin Panel</h1>
+
+  <div class="result-box" id="vote-results">
+    <p>Loading votes...</p>
+  </div>
+
+  <div class="top-voted" id="top-three">
+    <p>Loading top voted images...</p>
+  </div>
+
+  <script>
+    function loadVotes() {
+      const votes = JSON.parse(localStorage.getItem("votes") || "{}");
+      const count = {};
+      let html = `<h3>Total Votes: ${Object.keys(votes).length}</h3>`;
+
+      for (const email in votes) {
+        const img = votes[email];
+        count[img] = (count[img] || 0) + 1;
+        html += `<p>${email} voted for <span class="highlight">${img}</span></p>`;
+      }
+
+      document.getElementById("vote-results").innerHTML = html;
+
+      // Top 3 images
+      const top = Object.entries(count).sort((a,b) => b[1] - a[1]).slice(0,3);
+      let topHtml = `<h3>🏆 Top 3 Voted Images:</h3>`;
+      top.forEach(([img, votes], i) => {
+        topHtml += `<p>${i+1}. <span class="highlight">${img}</span> - ${votes} vote(s)</p>`;
+      });
+      document.getElementById("top-three").innerHTML = topHtml;
+    }
+
+    loadVotes();
+  </script>
+
+</body>
+</html>
