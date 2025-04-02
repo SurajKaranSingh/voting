@@ -182,7 +182,8 @@ body {
 .media-card img,
 .media-card video {
     width: 100%;
-    /* max-height: 200px; */
+    height: auto;
+    max-height: none;
     /* Limit media height */
     object-fit: contain;
     /* Show whole image/video */
@@ -195,6 +196,13 @@ body {
 
 .media-card video {
     background-color: #e0e0e0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
     /* Background for videos */
 }
 
@@ -792,15 +800,23 @@ body.admin-page {
     body {
         padding: 5px;
     }
+
     #snackbar {
         /* Allow it to get very close to the edges */
-        max-width: calc(100vw - 20px); /* e.g., 10px margin on each side */
-        padding: 10px 12px; /* Minimum practical padding */
-        font-size: 0.85em;  /* Smaller font */
-        bottom: 15px;       /* Lower starting position */
-        border-radius: 3px; /* Optional: smaller radius */
-     }
-      #snackbar.show {
-        bottom: 30px; /* Lower shown position */
-     }
+        max-width: calc(100vw - 20px);
+        /* e.g., 10px margin on each side */
+        padding: 10px 12px;
+        /* Minimum practical padding */
+        font-size: 0.85em;
+        /* Smaller font */
+        bottom: 15px;
+        /* Lower starting position */
+        border-radius: 3px;
+        /* Optional: smaller radius */
+    }
+
+    #snackbar.show {
+        bottom: 30px;
+        /* Lower shown position */
+    }
 }
