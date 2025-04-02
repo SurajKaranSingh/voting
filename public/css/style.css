@@ -1,0 +1,453 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Modern font */
+    background: url('/images/bg.jpg') no-repeat center center fixed;
+    /* Path relative to public */
+    background-size: cover;
+    /* Changed to cover for better scaling */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    /* Add some padding around the body */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content horizontally */
+    min-height: 100vh;
+    /* Ensure footer stays down */
+}
+
+.container {
+    max-width: 1200px;
+    /* Limit max width */
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+    /* Slightly transparent background for content */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    /* Space before footer */
+}
+
+/* Header Styles */
+.header-box {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    /* Gradient background */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    /* Keep inline-block for centering */
+    margin: 20px auto;
+    text-align: center;
+}
+
+.header-box h1 {
+    margin: 0;
+    font-size: 2em;
+    /* Responsive font size */
+}
+
+/* Email Input */
+#email {
+    margin: 25px auto;
+    /* More vertical space */
+    width: 80%;
+    max-width: 400px;
+    /* Limit width */
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: block;
+    /* Make it block for easier centering */
+}
+
+#email:focus {
+    outline: none;
+    border-color: #6e8efb;
+    box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+}
+
+/* Loading/Message Area */
+#message-area {
+    margin: 15px 0;
+    min-height: 20px;
+    /* Reserve space */
+    font-weight: bold;
+}
+
+.message-success {
+    color: #28a745;
+    /* Green */
+}
+
+.message-error {
+    color: #dc3545;
+    /* Red */
+}
+
+.message-loading {
+    color: #007bff;
+    /* Blue */
+}
+
+
+/* Image/Video Gallery */
+.section-header {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin: 30px auto 20px auto;
+    /* Spacing */
+    text-align: center;
+}
+
+.section-header h2 {
+    /* Use h2 for sections */
+    margin: 0;
+    color: #333;
+}
+
+.section-header p {
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.media-gallery {
+    /* Renamed from image-gallery */
+    display: grid;
+    /* Use Grid for better layout control */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* Responsive grid */
+    gap: 25px;
+    /* Increased gap */
+    justify-content: center;
+    /* Center items if they don't fill the row */
+    padding: 10px;
+    /* Add padding around the grid */
+}
+
+.media-card {
+    /* Renamed from image-card/video-card */
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Hover effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content */
+    overflow: hidden;
+    /* Ensure content stays within card */
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.media-card img,
+.media-card video {
+    width: 100%;
+    max-height: 200px;
+    /* Limit media height */
+    object-fit: contain;
+    /* Show whole image/video */
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    /* Space between media and button */
+}
+
+.media-card video {
+    background-color: #eee;
+    /* Background for videos */
+}
+
+.media-card button {
+    margin-top: auto;
+    /* Push button to bottom if card heights vary */
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007bff;
+    /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.media-card button:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+.media-card button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    /* Ensure modal is on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    /* Darker overlay */
+    overflow: auto;
+    /* Enable scroll if content overflows */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    margin: 5% auto;
+    /* Centered vertically and horizontally */
+    width: auto;
+    /* Auto width based on content */
+    max-width: 90%;
+    max-height: 85vh;
+    /* Limit max height */
+    display: block;
+    border-radius: 5px;
+    /* Optional: rounded corners */
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+
+/* Fullscreen Video Overlay */
+#fullscreenOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    /* Even darker */
+    z-index: 9999;
+    display: flex;
+    /* Use flex for centering */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#fullscreenVideo {
+    max-width: 95%;
+    /* Slightly more padding */
+    max-height: 85%;
+    border-radius: 8px;
+    /* Softer edges */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+}
+
+#fullscreenOverlay .close-btn {
+    /* Style the close button */
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 30px;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    /* Center the 'X' */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#fullscreenOverlay .close-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    /* Pushes footer to bottom if content is short */
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    /* Keep large for easy clicking */
+    cursor: pointer;
+    color: #eee;
+    /* Lighter color for footer icon */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.footer span:hover {
+    color: white;
+}
+
+/* Admin Page Specific Styles */
+body.admin-page {
+    background: #1a1a2e;
+    color: #f0f0f0;
+}
+
+.admin-page h1 {
+    color: #a777e3;
+    /* Match header gradient */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.result-box,
+.top-voted {
+    background: #2a2a3e;
+    /* Slightly lighter than body */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    /* Allow boxes to grow */
+    min-width: 300px;
+    /* Minimum width before wrapping */
+}
+
+.result-box h3,
+.top-voted h3 {
+    margin-top: 0;
+    color: #00ff99;
+    /* Highlight color */
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.result-box p,
+.top-voted p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 8px 0;
+    color: #ccc;
+    /* Lighter text color */
+}
+
+.highlight {
+    color: #00ff99;
+    font-weight: bold;
+    background-color: rgba(0, 255, 153, 0.1);
+    /* Subtle background */
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.admin-page #loading-message {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 40px;
+    color: #aaa;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-box h1 {
+        font-size: 1.5em;
+    }
+
+    .media-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        /* Smaller cards on smaller screens */
+    }
+
+    .result-container {
+        flex-direction: column;
+        /* Stack admin boxes */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .header-box h1 {
+        font-size: 1.3em;
+    }
+
+    #email {
+        width: 90%;
+    }
+
+    .media-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* Even smaller */
+        gap: 15px;
+    }
+
+    .media-card {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 80vh;
+    }
+
+    .modal-close {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+
+    .footer {
+        font-size: 20px;
+    }
+}
