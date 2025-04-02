@@ -7,6 +7,13 @@ const resultContainer = document.querySelector('.result-container');
 async function loadResults() {
     try {
         const response = await fetch('/api/results');
+        if (response.status === 401) {
+            loadingMessage.textContent = 'Authentication failed. Access denied.';
+            loadingMessage.style.color = '#dc3545'; // Error color
+            loadingMessage.style.display = 'block';
+            resultContainer.style.display = 'none'; // Hide container
+            return; // Stop processing
+        }
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -51,8 +58,11 @@ async function loadResults() {
 
     } catch (error) {
         console.error('Error fetching results:', error);
-        loadingMessage.textContent = 'Error loading results. Please try refreshing the page.';
-        loadingMessage.style.color = '#dc3545'; // Error color
+        if (loadingMessage.style.display !== 'block') { // Avoid overwriting the 401 message
+            loadingMessage.textContent = 'Error loading results. Please try refreshing the page.';
+            loadingMessage.style.color = '#dc3545';
+            loadingMessage.style.display = 'block';
+        }
         resultContainer.style.display = 'none'; // Hide container on error
     }
 }
